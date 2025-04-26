@@ -7,43 +7,43 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.fitnessserverapi.model.Workout;
-import com.example.fitnessserverapi.repository.WorkoutRepository;
+import com.example.fitnessserverapi.model.Progress;
+import com.example.fitnessserverapi.repository.ProgressRepository;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5173",methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}, allowedHeaders = "*")
 @RequestMapping("/api")
-public class WorkoutController {
+public class ProgressController {
 
     // Autowire WorkoutRepository
-    private final WorkoutRepository workoutRepository;
+    private final ProgressRepository progressRepository;
 
     @Autowired
-    public WorkoutController(WorkoutRepository workoutRepository) {
-        this.workoutRepository = workoutRepository;
+    public ProgressController(ProgressRepository progressRepository) {
+        this.progressRepository = progressRepository;
     }
 
     // Endpoint to retrieve all workouts
-    @GetMapping("/Workout")
-    public ResponseEntity<List<Workout>> getAllWorkout() {
-        return ResponseEntity.ok(this.workoutRepository.findAll());
+    @GetMapping("/Progress")
+    public ResponseEntity<List<Progress>> getAllWorkout() {
+        return ResponseEntity.ok(this.progressRepository.findAll());
     }
 
     // Endpoint to create a new workout
-    @PostMapping("/CreateWorkout")
-    public ResponseEntity<Workout> createWorkout(@RequestBody Workout workout) {
+    @PostMapping("/CreateProgress")
+    public ResponseEntity<Progress> createWorkout(@RequestBody Progress workout) {
         // Save the new workout and return it with status 201 Created
-        return ResponseEntity.status(201).body(this.workoutRepository.save(workout));
+        return ResponseEntity.status(201).body(this.progressRepository.save(workout));
     }
 
     // Endpoint to retrieve a workout by its ID
-    @GetMapping("/Workout/{id}")
+    @GetMapping("/Progress/{id}")
     public ResponseEntity getWorkoutByID(@PathVariable String id) {
-        Optional<Workout> optionalWorkout = this.workoutRepository.findById(id);
+        Optional<Progress> optionalProgress = this.progressRepository.findById(id);
 
-        if (optionalWorkout.isPresent()) {
+        if (optionalProgress.isPresent()) {
             // If the workout is found, return it
-            return ResponseEntity.ok(optionalWorkout.get());
+            return ResponseEntity.ok(optionalProgress.get());
         } else {
             // If the workout is not found, return a message
             return ResponseEntity.ok("The workout with ID " + id + " was not found");
@@ -52,33 +52,33 @@ public class WorkoutController {
 
 
     // Endpoint to delete a workout by its ID
-    @DeleteMapping("/WorkoutDelete/{id}")
+    @DeleteMapping("/ProgressDelete/{id}")
     public ResponseEntity deleteWorkoutByID(@PathVariable String id) {
-        Optional<Workout> optionalWorkout = this.workoutRepository.findById(id);
+        Optional<Progress> optionalProgress = this.progressRepository.findById(id);
 
-        if (optionalWorkout.isPresent()) {
+        if (optionalProgress.isPresent()) {
             // If the workout is found, delete it and return a success message
-            this.workoutRepository.deleteById(id);
-            return ResponseEntity.ok().body("{\"message\": \"Workout with ID " + id + " deleted successfully\"}");
+            this.progressRepository.deleteById(id);
+            return ResponseEntity.ok().body("{\"message\": \"Progress with ID " + id + " deleted successfully\"}");
         } else {
             // If the workout is not found, return a message
-            return ResponseEntity.ok().body("{\"message\": \"The workout with ID " + id + " was not found\"}");
+            return ResponseEntity.ok().body("{\"message\": \"The Progress with ID " + id + " was not found\"}");
         }
     }
 
 
     // Endpoint to update a workout by its ID
-    @PutMapping("/WorkoutUp/{id}")
-    public ResponseEntity<?> updateWorkout(@PathVariable String id, @RequestBody Workout updatedWorkout) {
-        Optional<Workout> optionalWorkout = this.workoutRepository.findById(id);
+    @PutMapping("/ProgressUp/{id}")
+    public ResponseEntity<?> updateWorkout(@PathVariable String id, @RequestBody Progress updatedWorkout) {
+        Optional<Progress> optionalWorkout = this.progressRepository.findById(id);
         if (optionalWorkout.isPresent()) {
             // If the workout is found, update its values and return the updated workout
-            Workout workout = optionalWorkout.get();
+            Progress workout = optionalWorkout.get();
             workout.setWorkoutState(updatedWorkout.getWorkoutState());
             workout.setDescription(updatedWorkout.getDescription());
             workout.setDate(updatedWorkout.getDate());
             workout.setState(updatedWorkout.getState());
-            return ResponseEntity.ok(this.workoutRepository.save(workout));
+            return ResponseEntity.ok(this.progressRepository.save(workout));
         } else {
             // If the workout is not found, return 404 Not Found
             return ResponseEntity.notFound().build();

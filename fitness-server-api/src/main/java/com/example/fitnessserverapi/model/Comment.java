@@ -25,9 +25,9 @@ public class Comment {
     @MongoId
     private String commentId;
 
-    public String getCommentId() {
-        return commentId;
-    }
+//    private String postId;
+    private String userId;
+    private String comment;
 
     public void setCommentId(String commentId) {
         this.commentId = commentId;
@@ -49,6 +49,14 @@ public class Comment {
         this.modifiedAt = modifiedAt;
     }
 
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public String getCommentId() {
+        return commentId;
+    }
+
     public String getUserId() {
         return userId;
     }
@@ -57,17 +65,9 @@ public class Comment {
         return comment;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
     public LocalDateTime getModifiedAt() {
         return modifiedAt;
     }
-
-    //    private String postId;
-    private String userId;
-    private String comment;
 
     @CreatedDate
     private LocalDateTime createdAt;

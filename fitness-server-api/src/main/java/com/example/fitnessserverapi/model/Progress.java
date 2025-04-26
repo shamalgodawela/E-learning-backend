@@ -8,24 +8,24 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
    
 @Document(collection = "mystatus")
-public class Workout {
+public class Progress {
     
     @Id
     private String id;
 
-    private String workoutState;
+    private String ProgressState;
     private String description;
     private Date date;
     private List<WorkoutStateDetail> state;
 
     // Constructor
-    public Workout() {
+    public Progress() {
         this.state = new ArrayList<>();
     }
 
     //parameterized constructor
-    public Workout(String workoutState,Date date,String description) {
-        this.workoutState = workoutState;
+    public Progress(String progressState, Date date, String description) {
+        this.ProgressState = progressState;
         this.date=date;
         this.description=description;
         this.state = new ArrayList<>();
@@ -46,12 +46,12 @@ public class Workout {
 
     //getter for workoutState
     public String getWorkoutState() {
-        return workoutState;
+        return ProgressState;
     }
 
     //setter for workoutState
-    public void setWorkoutState(String workoutState) {
-        this.workoutState = workoutState;
+    public void setWorkoutState(String progressState) {
+        this.ProgressState = progressState;
     }
 
     //getter for description

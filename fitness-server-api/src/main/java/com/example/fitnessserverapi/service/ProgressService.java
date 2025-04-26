@@ -5,27 +5,25 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 
-
-public class WorkoutService {
+public class ProgressService {
         
         @Id
         private String id;
     
-        private String workoutState;
+        private String progressState;
         private String description;
         private Date date;
         private List<WorkoutStateDetail> state;
     
         // Constructor
-        public WorkoutService() {
+        public ProgressService() {
             this.state = new ArrayList<>();
         }
 
-        public WorkoutService(String workoutState,Date date,String description) {
-            this.workoutState = workoutState;
+        public ProgressService(String progressState, Date date, String description) {
+            this.progressState = progressState;
             this.date=date;
             this.description=description;
             this.state = new ArrayList<>();
@@ -42,11 +40,11 @@ public class WorkoutService {
         }
     
         public String getWorkoutState() {
-            return workoutState;
+            return progressState;
         }
     
         public void setWorkoutState(String workoutState) {
-            this.workoutState = workoutState;
+            this.progressState = progressState;
         }
     
         public String getDescription() {

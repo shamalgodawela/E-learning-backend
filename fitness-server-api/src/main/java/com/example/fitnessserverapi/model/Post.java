@@ -32,20 +32,6 @@ public class Post {
     private List<String> image;
     private List<Comment> comments = new ArrayList<>();
     private boolean published;
-    private int likes;
-
-    @CreatedDate
-    private LocalDateTime created;
-
-    @LastModifiedDate
-    private LocalDateTime modified;
-
-    public Post( String title, String content, boolean published) {
-
-        this.title = title;
-        this.content = content;
-        this.published = published;
-    }
 
     public void setId(String id) {
         this.id = id;
@@ -55,24 +41,24 @@ public class Post {
         this.postUId = postUId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setImage(List<String> image) {
         this.image = image;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
-    }
-
     public void setPublished(boolean published) {
         this.published = published;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public void setLikes(int likes) {
@@ -85,14 +71,6 @@ public class Post {
 
     public void setModified(LocalDateTime modified) {
         this.modified = modified;
-    }
-
-    public Post(String title, String content, List<String> image, boolean published) {
-
-        this.title = title;
-        this.content = content;
-        this.image = image;
-        this.published = published;
     }
 
     public String getId() {
@@ -134,4 +112,29 @@ public class Post {
     public LocalDateTime getModified() {
         return modified;
     }
+
+    private int likes;
+
+    @CreatedDate
+    private LocalDateTime created;
+
+    @LastModifiedDate
+    private LocalDateTime modified;
+
+    public Post( String title, String content, boolean published) {
+
+        this.title = title;
+        this.content = content;
+        this.published = published;
+    }
+
+    public Post( String title, String content, List<String> image, boolean published) {
+
+        this.title = title;
+        this.content = content;
+        this.image = image;
+        this.published = published;
+    }
+
+
 }

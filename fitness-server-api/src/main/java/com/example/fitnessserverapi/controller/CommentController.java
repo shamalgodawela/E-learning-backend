@@ -11,8 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -83,4 +81,22 @@ public class CommentController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+    @DeleteMapping("/{postId}/comments/{commentId}")
+    public ResponseEntity<Post> deleteComment(@PathVariable String postId, @PathVariable String commentId) {
+        Optional<Post> post = postRepository.findById(postId);
+
+        if (post.isPresent()) {
+            Post _post = post.get();
+            List<Comment> updatedComments = _post.getComments().stream()
+                    .filter(c -> !c.getCommentId().equals(commentId))
+                    .toList();
+            _post.setComments(updatedComments);
+            Post updatedPost = postRepository.save(_post);
+            return ResponseEntity.ok(updatedPost);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 }
