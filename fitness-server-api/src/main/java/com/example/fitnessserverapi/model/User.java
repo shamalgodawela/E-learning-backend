@@ -36,6 +36,7 @@ public class User {
         return password;
     }
 
+//user.javs
     public User() {}
 
     public User(String email, String password) {
