@@ -8,6 +8,8 @@ import java.util.List;
 
 public class StudyGroup {
 
+//    gorups
+
     @Id
     private String id;
     private String name;
