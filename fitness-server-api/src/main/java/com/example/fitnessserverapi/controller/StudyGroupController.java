@@ -26,7 +26,7 @@ public class StudyGroupController {
         return ResponseEntity.ok(savedGroup);
     }
 
-    // Read all groups
+    // Rea
     @GetMapping("/getallGorups")
     public ResponseEntity<List<StudyGroup>> getAllGroups() {
         return ResponseEntity.ok(studyGroupRepository.findAll());
