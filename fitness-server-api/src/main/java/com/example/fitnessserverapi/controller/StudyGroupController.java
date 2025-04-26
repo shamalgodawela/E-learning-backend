@@ -32,7 +32,7 @@ public class StudyGroupController {
         return ResponseEntity.ok(studyGroupRepository.findAll());
     }
 
-    // Get group by ID
+    // Get group
     @GetMapping("/{id}")
     public ResponseEntity<?> getGroupById(@PathVariable String id) {
         Optional<StudyGroup> group = studyGroupRepository.findById(id);
