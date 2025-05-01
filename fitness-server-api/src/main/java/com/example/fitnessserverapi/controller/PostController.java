@@ -18,12 +18,14 @@ public class PostController {
     private PostService postService;
 
 
+
     // Get all posts
     @GetMapping("/Get")
     public ResponseEntity<List<Post>> getAllPosts() {
         List<Post> posts = postService.getAllPosts();
         return ResponseEntity.ok(posts);
     }
+
 
     @GetMapping("/{postUId}")
     public ResponseEntity<List<Post>> getPostsByPostUId(@PathVariable String postUId) {
