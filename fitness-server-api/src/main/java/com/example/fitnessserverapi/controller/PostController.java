@@ -26,7 +26,6 @@ public class PostController {
         return ResponseEntity.ok(posts);
     }
 
-
     @GetMapping("/{postUId}")
     public ResponseEntity<List<Post>> getPostsByPostUId(@PathVariable String postUId) {
         List<Post> posts = postService.getPostsByPostUId(postUId);
