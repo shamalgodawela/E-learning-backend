@@ -17,8 +17,6 @@ public class PostController {
     @Autowired
     private PostService postService;
 
-
-
     // Get all posts
     @GetMapping("/Get")
     public ResponseEntity<List<Post>> getAllPosts() {
