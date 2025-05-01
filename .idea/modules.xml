@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Online_Lerning management.iml" filepath="$PROJECT_DIR$/.idea/Online_Lerning management.iml" />
-      <module fileurl="file://$PROJECT_DIR$/fitness-server-api/fitness-server-api.iml" filepath="$PROJECT_DIR$/fitness-server-api/fitness-server-api.iml" />
     </modules>
   </component>
 </project>
