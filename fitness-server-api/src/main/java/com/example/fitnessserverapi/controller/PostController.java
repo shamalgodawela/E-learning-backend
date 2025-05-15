@@ -35,7 +35,6 @@ public class PostController {
     }
 
 
-
     // Add new post
     @PostMapping("/create")
     public ResponseEntity<Post> addPost(@RequestBody Post post) {
