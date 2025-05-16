@@ -18,7 +18,6 @@ public class PostController {
     private PostService postService;
 
 
-
     // Get all posts
     @GetMapping("/Get")
     public ResponseEntity<List<Post>> getAllPosts() {
@@ -35,7 +34,6 @@ public class PostController {
             return ResponseEntity.notFound().build();
         }
     }
-
 
 
     // Add new post
@@ -86,7 +84,6 @@ public class PostController {
         postService.deleteAllPosts();
         return ResponseEntity.noContent().build();
     }
-
 
 
 
