@@ -23,7 +23,7 @@ public class Progress {
         this.state = new ArrayList<>();
     }
 
-    //parameterized constructor
+    //parameterized constructors
     public Progress(String progressState, Date date, String description) {
         this.ProgressState = progressState;
         this.date=date;
@@ -81,6 +81,6 @@ public class Progress {
         this.state = state;
     }
 
-    // Inner class for Workout state detail
+
     public static record WorkoutStateDetail(String name, float completed, float burend_callary) {}
 }
