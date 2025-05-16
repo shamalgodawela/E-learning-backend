@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
-// Annotations
+// Annot
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,7 +25,7 @@ public class Comment {
     @MongoId
     private String commentId;
 
-//    private String postId;
+//    private 
     private String userId;
     private String comment;
 
