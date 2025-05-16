@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
-// Annotatio
+// Annot
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
