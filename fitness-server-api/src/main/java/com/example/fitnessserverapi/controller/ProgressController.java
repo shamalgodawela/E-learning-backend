@@ -23,20 +23,20 @@ public class ProgressController {
         this.progressRepository = progressRepository;
     }
 
-    //  retrieve all progress
+    // endpoint to retrieve all progress
     @GetMapping("/Progress")
     public ResponseEntity<List<Progress>> getAllWorkout() {
         return ResponseEntity.ok(this.progressRepository.findAll());
     }
 
-    //  create a new progress
+    // endpoint to  create a new progress
     @PostMapping("/CreateProgress")
     public ResponseEntity<Progress> createWorkout(@RequestBody Progress workout) {
         // Save the new progress and return it with status 201 Created
         return ResponseEntity.status(201).body(this.progressRepository.save(workout));
     }
 
-    //  retrieve a progress by its ID
+    // endpoint to retrieve a progress by its ID
     @GetMapping("/Progress/{id}")
     public ResponseEntity getWorkoutByID(@PathVariable String id) {
         Optional<Progress> optionalProgress = this.progressRepository.findById(id);
@@ -51,7 +51,7 @@ public class ProgressController {
     }
 
 
-    // delete a progress by its ID
+    //  endpoint to delete a progress by its ID
     @DeleteMapping("/ProgressDelete/{id}")
     public ResponseEntity deleteWorkoutByID(@PathVariable String id) {
         Optional<Progress> optionalProgress = this.progressRepository.findById(id);
@@ -67,7 +67,7 @@ public class ProgressController {
     }
 
 
-    //  update a progress by its ID
+    // endpoint to  update a progress by its ID
     @PutMapping("/ProgressUp/{id}")
     public ResponseEntity<?> updateWorkout(@PathVariable String id, @RequestBody Progress updatedWorkout) {
         Optional<Progress> optionalWorkout = this.progressRepository.findById(id);
