@@ -33,7 +33,6 @@ public class Progress {
 
 
     // Getters and setters
-
     //getter for id
     public String getId() {
         return id;
