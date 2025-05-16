@@ -25,7 +25,7 @@ public class Comment {
     @MongoId
     private String commentId;
 
-//    private 
+//    priv
     private String userId;
     private String comment;
 
