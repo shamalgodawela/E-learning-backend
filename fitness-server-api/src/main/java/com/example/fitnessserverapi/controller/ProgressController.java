@@ -15,7 +15,7 @@ import com.example.fitnessserverapi.repository.ProgressRepository;
 @RequestMapping("/api")
 public class ProgressController {
 
-    // Autowire WorkoutRepository
+    // Autowire ProgressRepository
     private final ProgressRepository progressRepository;
 
     @Autowired
@@ -23,56 +23,56 @@ public class ProgressController {
         this.progressRepository = progressRepository;
     }
 
-    // Endpoint to retrieve all workouts
+    //  retrieve all progress
     @GetMapping("/Progress")
     public ResponseEntity<List<Progress>> getAllWorkout() {
         return ResponseEntity.ok(this.progressRepository.findAll());
     }
 
-    // Endpoint to create a new workout
+    //  create a new progress
     @PostMapping("/CreateProgress")
     public ResponseEntity<Progress> createWorkout(@RequestBody Progress workout) {
-        // Save the new workout and return it with status 201 Created
+        // Save the new progress and return it with status 201 Created
         return ResponseEntity.status(201).body(this.progressRepository.save(workout));
     }
 
-    // Endpoint to retrieve a workout by its ID
+    //  retrieve a progress by its ID
     @GetMapping("/Progress/{id}")
     public ResponseEntity getWorkoutByID(@PathVariable String id) {
         Optional<Progress> optionalProgress = this.progressRepository.findById(id);
 
         if (optionalProgress.isPresent()) {
-            // If the workout is found, return it
+            // If the progress is found, return it
             return ResponseEntity.ok(optionalProgress.get());
         } else {
-            // If the workout is not found, return a message
-            return ResponseEntity.ok("The workout with ID " + id + " was not found");
+            // If the progress is not found, return a message
+            return ResponseEntity.ok("The progress  ID " + id + " was not found");
         }
     }
 
 
-    // Endpoint to delete a workout by its ID
+    // delete a progress by its ID
     @DeleteMapping("/ProgressDelete/{id}")
     public ResponseEntity deleteWorkoutByID(@PathVariable String id) {
         Optional<Progress> optionalProgress = this.progressRepository.findById(id);
 
         if (optionalProgress.isPresent()) {
-            // If the workout is found, delete it and return a success message
+            // If the progress is found, delete it and return a success message
             this.progressRepository.deleteById(id);
             return ResponseEntity.ok().body("{\"message\": \"Progress with ID " + id + " deleted successfully\"}");
         } else {
-            // If the workout is not found, return a message
+            // If the progress is not found, return a message
             return ResponseEntity.ok().body("{\"message\": \"The Progress with ID " + id + " was not found\"}");
         }
     }
 
 
-    // Endpoint to update a workout by its ID
+    //  update a progress by its ID
     @PutMapping("/ProgressUp/{id}")
     public ResponseEntity<?> updateWorkout(@PathVariable String id, @RequestBody Progress updatedWorkout) {
         Optional<Progress> optionalWorkout = this.progressRepository.findById(id);
         if (optionalWorkout.isPresent()) {
-            // If the workout is found, update its values and return the updated workout
+            // If the progress is found, update its values and return the updated progress
             Progress workout = optionalWorkout.get();
             workout.setWorkoutState(updatedWorkout.getWorkoutState());
             workout.setDescription(updatedWorkout.getDescription());
@@ -80,7 +80,7 @@ public class ProgressController {
             workout.setState(updatedWorkout.getState());
             return ResponseEntity.ok(this.progressRepository.save(workout));
         } else {
-            // If the workout is not found, return 404 Not Found
+            // If the progress is not found, return 404 Not Found
             return ResponseEntity.notFound().build();
         }
     }
